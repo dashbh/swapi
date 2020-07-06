@@ -1,0 +1,24 @@
+os: linux
+language: node_js
+node_js:
+  - 8.12
+dist: trusty
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+    - node_modules
+    - build
+
+jobs:
+  include:
+    - stage: Test
+      script: yarn test
+    - stage: Build
+      script: yarn build
+
+notifications:
+  email: false
